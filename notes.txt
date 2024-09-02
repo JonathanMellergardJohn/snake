@@ -1,0 +1,79 @@
+<<<<< TO FIX >>>>>
+-- test for ending the game by crash; doesn't seem to always work?
+-- snake should not be able to go through itself!
+-- snake should not be able to do a u-turn over itself!
+
+
+
+<<<<< LOG BOOK >>>>>
+
+--30 aug 2024
+
+I've created a Snake class as well as a the required HTML and
+CSS. My plan would be to structure the program as follows:
+
+Snake
+Render
+Game(Snake, Display)
+
+The Game class would be instantiated in the script.js. Snake
+and Display classes are injected in the constructor. The Game
+class controls game flow, including adding new 'apples' to be
+eaten by the snake.
+
+--31 aug 2024
+
+FOREACH LOOPS IN JS
+
+  objectOrArrayToIterate.forEach((item, index) => {
+    // code to execute
+  })
+
+QUERY SELECTOR IN JS
+
+  let htmlElement = document.querySelector('#idOfElement');
+  let anotherHtmlElement = document.querySelector('.classOfElement');
+
+  // note that only first element match is selected!
+
+ADDING CLASS TO SELECTED HTML ELEMENT 
+
+  let htmlElement.querySelector('#idOfElement');
+
+  htmlElement.classList.add('snake-segment');
+
+EXPORTING AND IMPORTING IN JS
+
+  // in the file to export, located at ./JS/Displayer.js:
+  export class Displayer { // code for class }
+
+  // in the file that imports, for instance script.js that is 
+  // referenced in index.html:
+  import { Displayer } from './JS/Displayer.js';
+
+  // in index.html. NOTE that type="module" MUST be included!
+  <script type="module" src="script.js"></script>
+
+---
+Bit of a problem here. My current render statement only ADDS segments to
+be rendered, but does not remove the old segments. The most 'brutish' way 
+of dealing with this is to select all html elements with the 'square' class
+and remove, if present, the 'snake-segment' class. BUT of course there is
+a much better approach. Instead, start the render by selecting all elements
+with the 'snake-segment' class, and remove this class from them. Then 
+render the new snake. It would seem that the IDEAL solution would be to 
+have the render() method only apply class changes to those elements which 
+have changed. This would be 2 elements (for normal movement) or 1 element 
+(if the snake grows). But to my mind this would require somehow storing or
+somehow figuring out the snake's previous state. I can't be bothered with 
+that right now. I have a solution that works, and it renders fine without
+any visible flicker and so on. 
+
+Time now to add event listeners for key down events so I can controll my 
+snake. I will do this in a Listers class that is injected into the 
+Controller class. 
+---
+I'm getting to a familiar place. I don't like my solution, so I just want to
+start over.
+---
+And I did start over, with a completely procedural approach

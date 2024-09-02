@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  background-color: aquamarine;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(10, 40px) ;
+  grid-template-rows: repeat(10, 40px);
+}
+.snake-segment {
+  background-color: green;
+}
+.apple {
+  background-color: red;
+  border: 10px solid white;
+  border-radius: 50%;
+}
